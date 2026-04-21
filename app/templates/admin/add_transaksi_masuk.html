@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Tambah Transaksi Masuk{% endblock %}
+
+{% block content %}
+<h1>Tambah Transaksi Masuk</h1>
+<form method="POST">
+    <div>
+        <label for="barang_id">Barang</label>
+        <select name="barang_id" id="barang_id" required>
+            {% for b in barang %}
+            <option value="{{ b.id }}">{{ b.nama }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <label for="jumlah">Jumlah</label>
+        <input type="number" name="jumlah" id="jumlah" required>
+    </div>
+    <div>
+        <label for="supplier_id">Supplier</label>
+        <select name="supplier_id" id="supplier_id" required>
+            {% for s in suppliers %}
+            <option value="{{ s.id }}">{{ s.nama_pt }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit">Simpan</button>
+</form>
+<a href="{{ url_for('main.manage_transaksi_masuk') }}">Kembali</a>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Supplier{% endblock %}
+
+{% block content %}
+<h1>Edit Supplier</h1>
+<form method="POST">
+    <div>
+        <label for="nama_pt">Nama PT</label>
+        <input type="text" name="nama_pt" id="nama_pt" value="{{ supplier.nama_pt }}" required>
+    </div>
+    <div>
+        <label for="username">Username</label>
+        <input type="text" name="username" id="username" value="{{ supplier.username }}" required>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" value="{{ supplier.password }}" required>
+    </div>
+    <button type="submit" class="button button-tambah">Simpan</button>
+</form>
+<a href="{{ url_for('main.manage_supplier') }}">Kembali</a>
+{% endblock %}

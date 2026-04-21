@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Barang Skincare{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        {% if session.get('username') %}
+            {% if session.get('role') == 'Admin' %}
+                <!-- Navbar untuk Admin -->
+                <a href="/admin/dashboard">Dashboard</a>
+                <a href="/admin/manage_barang">Manage Barang</a>
+                <a href="/admin/manage_kategori">Manage Kategori</a>
+                <a href="/admin/manage_transaksi_masuk">Transaksi Masuk</a>
+                <a href="/admin/manage_transaksi_keluar">Transaksi Keluar</a>
+                <a href="/admin/manage_supplier">Manage Supplier</a>
+            {% elif session.get('role') == 'Karyawan' %}
+                <!-- Navbar untuk Karyawan -->
+                <a href="/karyawan/dashboard">Dashboard</a>
+            {% elif session.get('role') == 'Supplier' %}
+                <!-- Navbar untuk Supplier -->
+                <a href="/supplier/dashboard">Dashboard</a>
+            {% endif %}
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+        {% endif %}
+    </nav>
+    
+    
+    
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+                <div class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+    
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

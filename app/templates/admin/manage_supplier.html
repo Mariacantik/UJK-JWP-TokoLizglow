@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Supplier{% endblock %}
+
+{% block content %}
+<h1>Manage Supplier</h1>
+<a href="/admin/add_supplier" class="button button-tambah">Tambah Supplier</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nama PT</th>
+            <th>Username</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for supplier in suppliers %}
+        <tr>
+            <td>{{ supplier.nama_pt }}</td>
+            <td>{{ supplier.username }}</td>
+            <td>
+                <a href="/admin/edit_supplier/{{ supplier.id }}" class="button button-tambah">Edit</a>
+                <a href="/admin/delete_supplier/{{ supplier.id }}" class="button button-hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus supplier ini?');">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('main.admin_dashboard') }}">Kembali</a>
+{% endblock %}

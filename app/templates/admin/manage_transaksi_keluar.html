@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Transaksi Keluar{% endblock %}
+
+{% block content %}
+<h1>Manage Transaksi Keluar</h1>
+<a href="/admin/add_transaksi_keluar" class="button button-tambah">Tambah Transaksi Keluar</a>
+<a href="/admin/cetak_laporan_transaksi_keluar_reportlab" class="button button-tambah">Cetak Laporan</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nama Barang</th>
+            <th>Jumlah</th>
+            <th>Tanggal</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for tk in transaksi_keluar %}
+        <tr>
+            <td>{{ tk.nama_barang }}</td>
+            <td>{{ tk.jumlah }}</td>
+            <td>{{ tk.tanggal }}</td>
+            <td>
+                <a href="/admin/delete_transaksi_keluar/{{ tk.id }}" class="button button-hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus transaksi ini?');">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('main.admin_dashboard') }}" class="button button-tambah">Kembali</a>
+{% endblock %}
