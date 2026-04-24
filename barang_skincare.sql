@@ -142,7 +142,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
-(1, 'admin', 'from werkzeug.security import generate_password_hash, check_password_hash\nfrom flask import Blueprint, render_template, redirect, url_for, flash, request, session, Response\nfrom reportlab.pdfgen import canvas\nfrom io import BytesIO\nfrom .db import db_conn', 'Admin'),
+(1, 'admin', 'scrypt:32768:8:1$YExIQXkdg2zSX0id$c853d51e4302f60e13dc2f11a2537b5cfafce38f77c6cd7982123bf79f4d69e7f98f33d8922146f4d5d960b846be8e59555b6cbac21cc55467606385a16d0995', 'Admin');
 (2, 'karyawan1', 'karyawan1', 'Karyawan');
 
 --
