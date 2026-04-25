@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Barang Supplier{% endblock %}
+
+{% block content %}
+<h1>Barang yang Ditugaskan</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nama Barang</th>
+            <th>Stok</th>
+            <th>Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for barang in barang_supplier %}
+        <tr>
+            <td>{{ barang.nama_barang }}</td>
+            <td>{{ barang.stok }}</td>
+            <td>{{ barang.kategori }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

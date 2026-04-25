@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Kategori{% endblock %}
+
+{% block content %}
+<h1>Edit Kategori</h1>
+<form method="POST">
+    <div>
+        <label for="nama">Nama Kategori</label>
+        <input type="text" name="nama" id="nama" value="{{ kategori.nama }}" required>
+    </div>
+    <button type="submit">Simpan</button>
+</form>
+<a href="{{ url_for('main.manage_kategori') }}">Kembali</a>
+{% endblock %}

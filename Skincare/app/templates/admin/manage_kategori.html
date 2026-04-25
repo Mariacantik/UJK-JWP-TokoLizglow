@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Kategori{% endblock %}
+
+{% block content %}
+<h1>Manage Kategori</h1>
+<a href="/admin/add_kategori" class="button button-tambah">Tambah Kategori</a>
+<table>
+    <thead>
+        <tr>
+            <th>Nama Kategori</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for k in kategori %}
+        <tr>
+            <td>{{ k.nama }}</td>
+            <td>
+                <a href="/admin/edit_kategori/{{ k.id }}" class="button button-tambah">Edit</a> |
+                <a href="/admin/delete_kategori/{{ k.id }}" class="button button-hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('main.admin_dashboard') }}" class="button button-tambah">Kembali</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Barang{% endblock %}
+
+{% block content %}
+<h1>Manage Barang</h1>
+<a href="/admin/add_barang" class="button button-tambah">Tambah Barang</a>
+<a href="/admin/cetak_laporan_barang_reportlab" class="button button-tambah">Cetak Laporan</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Stok</th>
+            <th>Kategori</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in barang %}
+        <tr>
+            <td>{{ item.nama_barang }}</td>
+            <td>{{ item.stok }}</td>
+            <td>{{ item.kategori }}</td>
+            <td>
+                <a href="/admin/edit_barang/{{ item.id }}" class="button button-tambah">Edit</a> |
+                <a href="/admin/delete_barang/{{ item.id }}" class="button button-hapus" onclick="return confirm('Apakah Anda yakin ingin menghapus barang ini?');">Hapus</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

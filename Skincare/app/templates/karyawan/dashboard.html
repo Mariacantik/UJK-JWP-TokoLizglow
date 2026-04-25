@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard Karyawan{% endblock %}
+
+{% block content %}
+<h1>Daftar Barang</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nama Barang</th>
+            <th>Stok</th>
+            <th>Kategori</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in barang %}
+        <tr>
+            <td>{{ b.nama_barang }}</td>
+            <td>{{ b.stok }}</td>
+            <td>{{ b.kategori }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
